@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Best Page Title Ever</title>
+            {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'beltapp/main.css' %}" media="screen" title="no title" charset="utf-8" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+	</head>
+
+<body>
+<h1> Welcome home {{user.first_name}}{{name}}</h1>
+<h2> submit your favourite quote !</h2>
+    <form id="submit" action = "/addquote" method="post">
+        {% csrf_token %}
+        <label> Author/Speaker</label>
+        <input type = "text" name = "speaker">
+        <textarea name="content" rows="10" cols="50"></textarea>
+        <input type="submit" >
+    </form>
+        <form action="/logout" method="post">
+        {% csrf_token %}
+        <input type="submit" value="logout">
+    </form>
+<h2> Quoteable Quotes.......</h2>
+                <div id ="quotable"> 
+                {% for quote in all %}
+                <p>{{quote.content}}</p>
+                <p>-{{quote.speaker}}</p>
+                <p> Submitted by <a href="/userfavs"method ="post">         {{quote.submitted.first_name}}</a></p>
+                <button action="/addlist{{quote.id}}" method="post">
+                add to my list 
+                </button>
+            <!-- <a href="/addlist{{quote.id}}">Add To my list</a>-->
+            {% endfor %}
+            </div>
+<div id ="favs">
+<h2> My personal favsies!</h2>
+
+</div>
+</body>
+</html>

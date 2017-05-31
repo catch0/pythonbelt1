@@ -1,0 +1,24 @@
+form label {
+    display: block;
+}
+form{
+    display:block;
+}
+label{
+    display: block;
+}
+#quotable{
+    background-color: paleturquoise;
+    width: 450px;
+    padding-left: 2px;
+    display: inline-block;
+}
+#favs{
+    display: inline-block;
+    width:450px;
+    vertical-align: top;
+}
+#submit{
+    display: block;
+    width: 55px;
+}
